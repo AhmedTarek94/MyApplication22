@@ -95,13 +95,13 @@ public class Tab_enroll extends Fragment implements View.OnClickListener,Adapter
         //this code for keep posts even app offline until the app online again
         users.keepSynced(true);
 
-        spinner = (Spinner)view.findViewById(R.id.spinner);
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item,paths);
+       // spinner = (Spinner)view.findViewById(R.id.spinner);
+        //ArrayAdapter<String>adapter = new ArrayAdapter<String>(getActivity(),
+          //      android.R.layout.simple_spinner_item,paths);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spinner.setAdapter(adapter);
+        //spinner.setOnItemSelectedListener(this);
 
         return view;
     }
@@ -145,7 +145,8 @@ public class Tab_enroll extends Fragment implements View.OnClickListener,Adapter
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission)) {
                 showError();
             } else {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, 1000);
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{permission}, 1000);
             }
         } else {
             openFilePicker();
@@ -174,10 +175,11 @@ public class Tab_enroll extends Fragment implements View.OnClickListener,Adapter
     private void openFilePicker() {
         new MaterialFilePicker()
                 .withActivity(getActivity())
-                .withFilter(Pattern.compile(".*\\.txt$pdf$png$jpeg"))
+                .withFilter(Pattern.compile(".*\\.pdf"))
                 .withRequestCode(1000)
                 .withHiddenFiles(true)
                 .withTitle("Sample title")
+                .withPath("/")
                 .start();
     }
 
