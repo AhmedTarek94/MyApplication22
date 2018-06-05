@@ -193,7 +193,8 @@ public class Tab_enroll extends Fragment implements View.OnClickListener,Adapter
             if (path != null) {
                 Log.d("Path: ", path);
                 Toast.makeText(getActivity(), "Picked file: " + path, Toast.LENGTH_LONG).show();
-            }
+                            }else  Toast.makeText(getActivity(), "Picked file: " + path, Toast.LENGTH_LONG).show();
+
         }
     }
 

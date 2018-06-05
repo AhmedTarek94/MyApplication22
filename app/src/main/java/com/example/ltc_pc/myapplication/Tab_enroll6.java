@@ -1,7 +1,7 @@
 package com.example.ltc_pc.myapplication;
 
-import android.*;
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,18 +9,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
+
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -33,21 +30,33 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
 
 
+
+
 import static android.app.Activity.RESULT_OK;
 
 
-public class Tab_enroll6 extends Fragment implements View.OnClickListener {
+public class Tab_enroll6 extends Fragment  {
 
-    private Button btn_file;
-    private Button btn_submit;
-    public static final String STORAGE_PATH_UPLOADS = "uploads/";
-    public static final String DATABASE_PATH_UPLOADS = "uploads";
-    StorageReference st_ref;
+    //Variables
+    private Button btn_file, btn_submit;
+    private EditText txt_id,txt_name,txt_email,txt_mob;
+    private int id;
+    private String name;
+    private String email;
+    private int mob;
+    private User user;
+
+    private Uri filePath ,downloadUrl;
+
+
+    private final int PICK_PDF_REQUEST = 10;
+
+
     FirebaseStorage storage;
+    StorageReference storageReference;
+
     FirebaseDatabase database;
-    DatabaseReference db_ref;
-    final static int PICK_PDF_CODE = 2342;
-    ProgressBar progressBar;
+    DatabaseReference databaseReference;
 
 
     public static frag_parts_mtc newInstance(int position) {
@@ -80,35 +89,50 @@ public class Tab_enroll6 extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.tab_enroll, container, false);
 
-        btn_file = (Button) view.findViewById(R.id.btn_file);
-        btn_file.setOnClickListener(this);
+       storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference("Users");
 
+        database=FirebaseDatabase.getInstance();
+        databaseReference=database.getReference();
+
+        txt_id =view.findViewById(R.id.txt_id);
+        txt_name=view.findViewById(R.id.txt_name);
+        txt_email=view.findViewById(R.id.txt_email);
+        txt_mob=view.findViewById(R.id.txt_mob);
+
+
+        String ids=txt_id.getText().toString();
+        id=new Integer(ids).intValue();
+        name=txt_name.getText().toString();
+        email=txt_email.getText().toString();
+        //mob=Integer.valueOf(txt_mob.getText().toString());
+
+
+
+
+        btn_file = (Button) view.findViewById(R.id.btn_file);
         btn_submit = (Button) view.findViewById(R.id.btn_submit);
-        btn_submit.setOnClickListener(this);
+
+        btn_file.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){choose();}
+        });
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upload();push_user(user);
+            }
+        });
 
         return view;
     }
 
 
-    @Override
-    public void onClick(View view) {
 
-        switch (view.getId()) {
-            case (R.id.btn_file): {
-                showFileChooser();
-            }
+    private void choose() {
 
-            case (R.id.btn_submit): {
-            }
-        }
-
-    }
-
-
-
-    private void showFileChooser() {
-//permission checking
-        String []perm = {android.Manifest.permission.READ_EXTERNAL_STORAGE};
+        String[] perm = {android.Manifest.permission.READ_EXTERNAL_STORAGE};
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                 ContextCompat.checkSelfPermission(getActivity(),
                         Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -117,109 +141,74 @@ public class Tab_enroll6 extends Fragment implements View.OnClickListener {
             //request the permission if isn`t granted
             ActivityCompat.requestPermissions(
                     getActivity(), perm, 1000);
-
-
-             return;
-        }//got permission
-
-        //choosing the file
-        Intent intent = new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-
-        startActivityForResult(Intent.createChooser(
-                intent, "PDF"),
-                PICK_PDF_CODE);
-        /*try {
-
-        }
-        //if the user has no file manager
-        catch (android.content.ActivityNotFoundException ex) {
-
-            Toast.makeText(getActivity(), "Please install a File Manager.",
-                    Toast.LENGTH_SHORT).show();
-        }*/
-        //End of catch
-
-
-
-
-
-        }//End of file Chooser
-
-
-    //Checking the return of the chooser
-    @Override
-
-    // the intent fileIntent is of type uri
-    public void onActivityResult(int requestCode, int resultCode, Intent fileIntent) {
-        super.onActivityResult(requestCode, resultCode, fileIntent);
-
-        if (requestCode==PICK_PDF_CODE && requestCode==RESULT_OK
-            && fileIntent!=null && fileIntent.getData()!=null)
-        {
-            //a file is selected
-            if(fileIntent.getData()!=null)
-
-               uploadFile(fileIntent.getData());
-                }
-            else
+                        choose();}
+        else
             {
-                Toast.makeText(getActivity(),
-                        "No file selected",Toast.LENGTH_LONG)
-                        .show();
-            }
-
-
+            Intent intent = new Intent();
+            intent.setType("application/pdf");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select PDF"), PICK_PDF_REQUEST);
         }
-    //end of file handler
-
-    //File uploading
-
-    private void uploadFile(Uri data)
-    {
-        progressBar.setVisibility(View.VISIBLE);
-
-        st_ref=storage.getReference();
-        st_ref.child("pdf/" + System.currentTimeMillis()+
-                ".pdf");
-        st_ref.putFile(data)
-                .addOnSuccessListener(new OnSuccessListener
-                        <UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getActivity(),"Success"
-                                ,Toast.LENGTH_LONG);
-
-                    }
-                })
-
-                .addOnProgressListener(new OnProgressListener
-                        <UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double perc=(100.0*taskSnapshot.
-                                getBytesTransferred()
-                                /taskSnapshot.getTotalByteCount());
-                        Toast.makeText(getContext(),"Transfering"+String.valueOf(perc),
-                                Toast.LENGTH_LONG);
-
-                    }
-                })
-
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(),"Faild"
-                                ,Toast.LENGTH_LONG);
-
-                    }
-                });
-
-
-
     }
 
-}//End of base class
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_PDF_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+
+        }
+    }
+
+    private void upload() {
+
+        if (filePath != null) {
+            final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("PDFs"/*+ UUID.randomUUID().toString()*/
+                    + filePath.getLastPathSegment());
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            downloadUrl = taskSnapshot.getDownloadUrl();
+                            Toast.makeText(getContext(), "Uploaded :"+downloadUrl.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getContext(), "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                    });
+        }
+    }
+    private void push_user(User user)
+    {
+        user.setID(id);
+        user.setName(name);
+        user.setEmail(email);
+        user.setMob(mob);
+        user.setUrl(downloadUrl);
+    }
+}
+
+
+
+
+

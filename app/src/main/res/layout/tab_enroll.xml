@@ -38,37 +38,36 @@
                 android:id="@+id/txt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="57dp"
                 android:layout_marginBottom="20sp"
-                android:hint="Name" />
+                android:layout_marginTop="57dp"
+                android:hint="Name"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:hint="Email" />
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/txt_mob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:hint="Mobile" />
+                android:hint="Mobile"
+                android:maxLength="11"
+                android:inputType="phone" />
 
             <EditText
                 android:id="@+id/txt_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:hint="ID number" />
-
-            <ProgressBar
-                android:id="@+id/progressbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:visibility="gone" />
+                android:hint="ID number"
+                android:maxLength="14"
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/btn_file"
