@@ -2,15 +2,22 @@ package com.example.ltc_pc.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
+import com.github.chrisbanes.photoview.PhotoView;
+
+
+
 /*
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -57,51 +64,36 @@ public class frag_mtc_map extends Fragment /*implements OnMapReadyCallback  */{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_mtc_map, container, false);
 
-        ImageView imageView3 = (ImageView) view.findViewById(R.id.imageView3);
-        //imageView3.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
+
+        PhotoView photo_map1 = (PhotoView) view.findViewById(R.id.photo_map1);
+       // photo_map1.setImageResource(R.drawable.map1);
+
+        PhotoView photo_map2 = (PhotoView) view.findViewById(R.id.photo_map2);
+        //photo_map2.setImageResource(R.drawable.map2);
+
+        Button btn_find=(Button)view.findViewById(R.id.btn_find);
+        btn_find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:30.080448,31.296269?z=20");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
+
+
+       // final ImageView imageView3 = (ImageView) view.findViewById(R.id.imageView3);
+        //imageView3.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));V
+
+
 
         ImageView imageView4 = (ImageView) view.findViewById(R.id.imageView4);
        // imageView4.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
-        imageView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
-                // Here we can use to full view of image.
-            }
-        });
 
-        imageView3 .setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(getActivity(), "Long Clicked", Toast.LENGTH_SHORT).show();
-                // Here we can use to show dialog.
-                showDialog();
-                return true;
-            }
-        });
 
-        imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
-                // Here we can use to full view of image.
-            }
-        });
 
-        imageView4 .setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(getActivity(), "Long Clicked", Toast.LENGTH_SHORT).show();
-                // Here we can use to show dialog.
-                showDialog();
-                return true;
-            }
-        });
 
         /*SupportMapFragment mapFragment = (SupportMapFragment) getFragmentManager()
                 .findFragmentById(R.id.mapView);
@@ -109,44 +101,6 @@ public class frag_mtc_map extends Fragment /*implements OnMapReadyCallback  */{
         return view;
     }
 
-    public void showDialog(){
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        //Uncomment the below code to Set the message and title from the strings.xml file
-        //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
-
-        //Setting message manually and performing action on button click
-        builder.setMessage("Do you want to Like")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                       //finish();
-
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
-                        dialog.cancel();
-                    }
-                });
-
-        //Creating dialog box
-        AlertDialog alert = builder.create();
-        //Setting the title manually
-        alert.setTitle("AlertDialogExample");
-        alert.show();
-
-    }
-
-    /*@Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }*/
 }

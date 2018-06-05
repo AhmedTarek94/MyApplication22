@@ -45,16 +45,16 @@ public class frag_mtc_events extends Fragment{
         View view = inflater.inflate(R.layout.frag_mtc_events, container, false);
 
         ImageView imageView2 = (ImageView) view.findViewById(R.id.imageView2);
-        imageView2.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
+       // imageView2.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
         ImageView imageView3 = (ImageView) view.findViewById(R.id.imageView3);
-        imageView3.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
+        //imageView3.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
         ImageView imageView4 = (ImageView) view.findViewById(R.id.imageView4);
-        imageView4.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
+        //imageView4.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
         ImageView imageView5 = (ImageView) view.findViewById(R.id.imageView5);
-        imageView5.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
+        //imageView5.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
 
         return view;

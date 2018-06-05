@@ -17,33 +17,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <Button
+                android:id="@+id/btn_find"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/photo_map1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/map1" />
+                android:src="@drawable/map1"
+                />
 
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/photo_map2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/map2" />
-
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView"
-                android:layout_width="match_parent"
-                android:layout_height="177dp" />
+                android:src="@drawable/map2"/>
 
         </LinearLayout>
 
