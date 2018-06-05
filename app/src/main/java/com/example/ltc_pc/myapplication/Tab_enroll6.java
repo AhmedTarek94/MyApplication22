@@ -102,7 +102,7 @@ public class Tab_enroll6 extends Fragment  {
 
 
         String ids=txt_id.getText().toString();
-        id=new Integer(ids).intValue();
+       // id=new Integer(ids).intValue();
         name=txt_name.getText().toString();
         email=txt_email.getText().toString();
         //mob=Integer.valueOf(txt_mob.getText().toString());
@@ -121,7 +121,7 @@ public class Tab_enroll6 extends Fragment  {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                upload();push_user(user);
+                upload();//push_user(user);
             }
         });
 
@@ -198,14 +198,14 @@ public class Tab_enroll6 extends Fragment  {
                     });
         }
     }
-    private void push_user(User user)
+ /*   private void push_user(User user)
     {
         user.setID(id);
         user.setName(name);
         user.setEmail(email);
         user.setMob(mob);
         user.setUrl(downloadUrl);
-    }
+    }*/
 }
 
 
