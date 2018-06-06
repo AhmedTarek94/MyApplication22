@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ltc_pc.myapplication.Tab_enroll6">
+    tools:context="com.example.ltc_pc.myapplication.Tab_enroll">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textSize="30sp"
         tools:ignore="MissingConstraints" />
 
     <ScrollView
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+              />
 
             <EditText
                 android:id="@+id/txt_mob"
@@ -58,7 +59,7 @@
                 android:layout_marginBottom="20sp"
                 android:hint="Mobile"
                 android:maxLength="11"
-                android:inputType="phone" />
+              />
 
             <EditText
                 android:id="@+id/txt_id"
@@ -67,7 +68,7 @@
                 android:layout_marginBottom="20sp"
                 android:hint="ID number"
                 android:maxLength="14"
-                android:inputType="number" />
+                 />
 
             <Button
                 android:id="@+id/btn_file"
@@ -93,5 +94,6 @@
                 app:layout_constraintVertical_bias="1.0" />
         </LinearLayout>
     </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

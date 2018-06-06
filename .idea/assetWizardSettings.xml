@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/Prog/Android%20Studio/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/D:/Prog/Android%20Studio/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_public_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="btn_map" />
+                            <entry key="outputName" value="site" />
                             <entry key="sourceFile" value="C:\Users\DaReDeViL" />
                           </map>
                         </option>

@@ -15,6 +15,7 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import android.widget.EditText;
@@ -35,18 +36,19 @@ import com.google.firebase.storage.UploadTask;
 import static android.app.Activity.RESULT_OK;
 
 
-public class Tab_enroll6 extends Fragment  {
+public class Tab_enroll extends Fragment  {
 
     //Variables
     private Button btn_file, btn_submit;
     private EditText txt_id,txt_name,txt_email,txt_mob;
-    private int id;
+    private String id;
     private String name;
     private String email;
-    private int mob;
+    private String mob;
     private User user;
 
-    private Uri filePath ,downloadUrl;
+    private Uri filePath ;
+    String downloadUrl;
 
 
     private final int PICK_PDF_REQUEST = 10;
@@ -69,7 +71,7 @@ public class Tab_enroll6 extends Fragment  {
         return fragment;
     }
 
-    public Tab_enroll6() {
+    public Tab_enroll() {
 
     }
 
@@ -119,7 +121,11 @@ public class Tab_enroll6 extends Fragment  {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                upload();//push_user(user);
+                upload();
+                push_user();
+
+
+
             }
         });
 
@@ -167,15 +173,18 @@ public class Tab_enroll6 extends Fragment  {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("PDFs"/*+ UUID.randomUUID().toString()*/
-                    + filePath.getLastPathSegment());
-            ref.putFile(filePath)
+           storageReference = storage.getReference().child(filePath.getLastPathSegment().trim().toString());
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            storageReference.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            downloadUrl = taskSnapshot.getDownloadUrl();
+                            downloadUrl = String.valueOf(taskSnapshot.getDownloadUrl());
+                            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                             Toast.makeText(getContext(), "Uploaded :"+downloadUrl.toString(), Toast.LENGTH_SHORT).show();
+                            Clear_fields();
 
                         }
                     })
@@ -192,18 +201,32 @@ public class Tab_enroll6 extends Fragment  {
                             double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
                             progressDialog.setMessage("Uploaded " + (int) progress + "%");
+
                         }
                     });
         }
     }
- /*   private void push_user(User user)
+    private void push_user()
     {
-        user.setID(id);
-        user.setName(name);
-        user.setEmail(email);
-        user.setMob(mob);
-        user.setUrl(downloadUrl);
-    }*/
+        id=txt_id.getText().toString();
+        name=txt_name.getText().toString();
+        email=txt_email.getText().toString();
+        mob=txt_mob.getText().toString();
+
+        user=new User(name,id,email,downloadUrl);
+
+        databaseReference.child("Users").child(mob).push().setValue(user);
+
+    }
+
+    private void Clear_fields()
+    {
+        txt_email.setText(null);
+        txt_id.setText(null);
+        txt_mob.setText(null);
+        txt_name.setText(null);
+        filePath=null;
+    }
 }
 
 

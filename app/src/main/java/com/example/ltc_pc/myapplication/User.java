@@ -6,20 +6,29 @@ public class User {
 
     private String name;
     private String email;
-    private double id;
-    private double mob;
-    private String univ;
-    private Uri url;
+    private String id;
+    private String mob;
+    //private String univ;
+    private String url;
 
-    public User(String name, String email, double id, double mob /*String univ*/,Uri url)
+    public User(String name, String email, String id,String url)
     {
         this.name= name;
         this.email=email ;
         this.id= id;
-        this.mob=mob ;
+       // this.mob=mob ;
        // this.univ= univ;
         this.url=url;
 
+    }
+
+    public User()
+    {
+       this.name="asl;";
+       this.email="asl;";
+       this.id="asl;";
+       this.mob="asl;";
+       this.url=null;
     }
 
 
@@ -31,16 +40,16 @@ public class User {
     public void setEmail(String email)
     {this.email=email;}
 
-    public void setID(int id)
+    public void setID(String id)
     {this.id=id;}
 
-    public void setMob(int mob)
+    public void setMob(String mob)
     {this.mob=mob;}
 
    // public void setUniv(String univ)
     //{this.univ=univ;}
 
-    public void setUrl(Uri url)
+    public void setUrl(String url)
     {this.url=url;}
 //////////////////////////////
     public String getName()
@@ -49,15 +58,15 @@ public class User {
     public String getEmail()
     {return email;}
 
-    public double getID()
+    public String getID()
     {return id;}
 
    // public String getUniv()
   //  {return univ;}
 
-    public double getMob()
+    public String getMob()
     {return mob;}
 
-    public Uri getUrl()
+    public String getUrl()
     {return url;}
 }

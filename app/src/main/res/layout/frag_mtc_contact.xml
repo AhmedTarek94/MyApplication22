@@ -4,61 +4,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ltc_pc.myapplication.frag_mtc_contact"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="25dp">
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/txt_site"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="71dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:drawable/editbox_background"
         android:clickable="true"
-        android:text="Site"
-        android:textColor="@android:color/white"
+        android:drawableLeft="@drawable/site"
+        android:text="  MTC Web site"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_mail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="75dp"
-        android:clickable="true"
-        android:rotationX="0"
-        android:rotationY="20"
-        android:text="www.mtc.edu.eg"
-        android:textColor="#10c9d6"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txt_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:text="Phone"
-        android:textColor="@android:color/white"
+        android:layout_marginBottom="168dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableLeft="@drawable/phonecall"
+        android:text="  Phone"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_mail" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txt_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
-        android:text="Email"
-        android:textColor="@android:color/white"
+        android:layout_marginBottom="72dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:drawable/editbox_background"
+        android:drawableLeft="@drawable/mail"
+        android:text="  Email"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_site" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="168dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="62dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="36dp"
+        android:drawableLeft="@drawable/cont"
+        android:text="   Contact Us"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_site"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

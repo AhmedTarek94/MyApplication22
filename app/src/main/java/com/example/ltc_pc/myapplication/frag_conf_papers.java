@@ -64,7 +64,8 @@ public class frag_conf_papers extends Fragment {
        final Spinner dep_spin = view.findViewById(R.id.dep_spin);
 //create a list of items for the spinner.
         String[] deps = new String[]{"Electrical Engineering", "Mechanical Engineering",
-                "Chemical Engineering","Aero-Space Engineering"};
+                "Chemical Engineering","Aero-Space Engineering",
+                "Naval Engineering","Civil and Architectural Engineering"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
         final ArrayAdapter<String> dep_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, deps);

@@ -1,12 +1,15 @@
 package com.example.ltc_pc.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 
@@ -21,6 +24,24 @@ final Context context=this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final android.app.AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+        alertDialog.setTitle("Title");
+        alertDialog.setIcon(R.drawable.currentcommandantcircularsquare);
+        alertDialog.setMessage("Message1");
+
+        final SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);//this==context
+        if(!prefs.contains("FirstTime")){
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("FirstTime",true);
+                    editor.commit();
+
+                }
+            });
+        }
 
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -59,7 +80,7 @@ final Context context=this;
                 case 2:
                     return new Tab_conf();
                 default:
-                    return new Tab_enroll6();
+                    return new Tab_enroll();
             }
         }
 
