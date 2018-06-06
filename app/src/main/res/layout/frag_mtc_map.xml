@@ -8,41 +8,56 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_find"
+            <TextView
+                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Find us on Google Maps"
+                android:textSize="20sp" />
 
-            <Space
+            <ImageButton
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:src="@drawable/btn_map"
+                tools:layout_editor_absoluteX="148dp"
+                tools:layout_editor_absoluteY="36dp" />
+
+            <TextView
+                android:id="@+id/textView14"
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="wrap_content"
+                android:text="Or,Here is the place "
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="92dp" />
+
 
             <com.github.chrisbanes.photoview.PhotoView
                 android:id="@+id/photo_map1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/map1"
-                />
-
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:src="@drawable/map1" />
 
             <com.github.chrisbanes.photoview.PhotoView
                 android:id="@+id/photo_map2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/map2"/>
+                android:src="@drawable/map2" />
 
         </LinearLayout>
 

@@ -21,6 +21,10 @@ public class frag_conf_papers extends Fragment {
     String [] pap3;
     String [] pap4;
 
+    String []dep_pap;
+    Button btn_paper;
+    String url;
+
 
     public static frag_conf_papers newInstance(int position) {
         frag_conf_papers fragment = new frag_conf_papers();
@@ -52,7 +56,9 @@ public class frag_conf_papers extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_conf_papers, container, false);
 
-        Button btn_paper=(Button)view.findViewById(R.id.btn_paper);
+        btn_paper=(Button)view.findViewById(R.id.btn_paper);
+        dep_pap=new String[]{"https://drive.google.com/open?id=1Glq0Ede9KKStaEQDiI9Lrc1VfTFeWXUB",
+                             "https://drive.google.com/open?id=1hWA3qxk_8f61K9YiouFUVZhyIbO93D6p"};
 
 
        final Spinner dep_spin = view.findViewById(R.id.dep_spin);
@@ -128,11 +134,31 @@ public class frag_conf_papers extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int position, long id) {
+                /*if(position==0)
+                {
+                   url=dep_pap[0];
+                }
+                else if(position==1)
+                {
+
+                }*/
+
+                url=dep_pap[position];
+
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        btn_paper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent view_intent=new Intent(getActivity(),viewer.class);
+                view_intent.putExtra("url",url);
+                startActivity(view_intent);
             }
         });
 

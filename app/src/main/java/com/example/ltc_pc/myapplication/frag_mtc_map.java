@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -70,8 +71,8 @@ public class frag_mtc_map extends Fragment /*implements OnMapReadyCallback  */{
         PhotoView photo_map2 = (PhotoView) view.findViewById(R.id.photo_map2);
         //photo_map2.setImageResource(R.drawable.map2);
 
-        Button btn_find=(Button)view.findViewById(R.id.btn_find);
-        btn_find.setOnClickListener(new View.OnClickListener() {
+        ImageButton btn_map=(ImageButton) view.findViewById(R.id.btn_map);
+        btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri gmmIntentUri = Uri.parse("geo:30.080448,31.296269?z=20");
