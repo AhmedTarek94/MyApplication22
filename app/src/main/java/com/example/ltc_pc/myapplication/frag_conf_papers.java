@@ -5,16 +5,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.content.Intent;
+import android.widget.Spinner;
 
 
 public class frag_conf_papers extends Fragment {
 
-    private ImageButton btn_dep1;
-    private ImageButton btn_dep2;
-    private ImageButton btn_dep3;
-    private ImageButton btn_dep4;
+
+    String [] pap1;
+    String [] pap2;
+    String [] pap3;
+    String [] pap4;
+
 
     public static frag_conf_papers newInstance(int position) {
         frag_conf_papers fragment = new frag_conf_papers();
@@ -46,54 +52,90 @@ public class frag_conf_papers extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_conf_papers, container, false);
 
-        btn_dep1=(ImageButton)view.findViewById(R.id.btn_dep1);
-        btn_dep2=(ImageButton)view.findViewById(R.id.btn_dep2);
-        btn_dep3=(ImageButton)view.findViewById(R.id.btn_dep3);
-        btn_dep4=(ImageButton)view.findViewById(R.id.btn_dep4);
+        Button btn_paper=(Button)view.findViewById(R.id.btn_paper);
 
-        btn_dep1.setOnClickListener(new View.OnClickListener() {
+
+       final Spinner dep_spin = view.findViewById(R.id.dep_spin);
+//create a list of items for the spinner.
+        String[] deps = new String[]{"Electrical Engineering", "Mechanical Engineering",
+                "Chemical Engineering","Aero-Space Engineering"};
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        final ArrayAdapter<String> dep_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, deps);
+//set the spinners adapter to the previously created one.
+        dep_spin.setAdapter(dep_adapter);
+
+        pap1=new String[]{"1","2","3"};
+        pap2=new String[]{"12","22","32"};
+        pap3=new String[]{"13","23","33"};
+        pap4=new String[]{"14","24","34"};
+
+        final Spinner pap_spin = view.findViewById(R.id.pap_spin);
+//create a list of items for the spinner.
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        final ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, pap1);
+//set the spinners adapter to the previously created one.
+        pap_spin.setAdapter(pap_adapter);
+
+
+
+
+        dep_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int position, long id) {
+                if (position==0)
+                {
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap1);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+
+                else if (position==1)
+                {
+
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap2);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+
+                else if (position==2)
+                {
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap3);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+
+                else if (position==3)
+                {
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap4);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+            }
 
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(getActivity(), dep1.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-
+            public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
 
-        btn_dep2.setOnClickListener(new View.OnClickListener() {
+        pap_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int position, long id) {
+
+            }
 
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(getActivity(), dep2.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-
+            public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
 
-        btn_dep3.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(getActivity(), dep3.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-
-            }
-        });
-
-        btn_dep4.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent(getActivity(), dep4.class);
-                ((MainActivity) getActivity()).startActivity(intent);
-
-            }
-        });
 
         return view;
 
@@ -102,3 +144,4 @@ public class frag_conf_papers extends Fragment {
 
 
 }
+

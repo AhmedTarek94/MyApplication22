@@ -102,10 +102,8 @@ public class Tab_enroll6 extends Fragment  {
 
 
         String ids=txt_id.getText().toString();
-       // id=new Integer(ids).intValue();
         name=txt_name.getText().toString();
         email=txt_email.getText().toString();
-        //mob=Integer.valueOf(txt_mob.getText().toString());
 
 
 

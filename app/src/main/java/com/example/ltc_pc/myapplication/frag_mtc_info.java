@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 
 
 
@@ -60,7 +59,6 @@ public class frag_mtc_info extends Fragment{
         View view = inflater.inflate(R.layout.frag_mtc_info, container, false);
 
         ImageView mtc_header = (ImageView) view.findViewById(R.id.mtc_header);
-        mtc_header.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
 
 

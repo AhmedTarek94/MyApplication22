@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 
@@ -29,6 +30,14 @@ final Context context=this;
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.mtc);
+
+        tabLayout.getTabAt(1).setIcon(R.drawable.parts);
+
+        tabLayout.getTabAt(2).setIcon(R.drawable.iugrclogo);
+
+        tabLayout.getTabAt(3).setIcon(R.drawable.enroll);
+
+
 
     }
 
@@ -64,11 +73,11 @@ final Context context=this;
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 //case 0:
-                  //  return " ";
+                  //  return " MTC";
                 case 1:
                     return "Parts.";
                 case 2:
-                    return "IUGVC";
+                    return "IUGRC";
                 case 3:
                     return "Enroll";
             }

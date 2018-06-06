@@ -14,17 +14,19 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:sharedUserId="android.uid.system"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity_splash"
             android:label="@string/app"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"
+            />
         <activity android:name=".sample" />
 
         <meta-data
@@ -34,10 +36,6 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/map_api_key" />
 
-        <activity android:name=".dep1" />
-        <activity android:name=".dep2" />
-        <activity android:name=".dep3" />
-        <activity android:name=".dep4" />
         <activity android:name=".viewer"></activity>
     </application>
 

@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler;
 import com.github.chrisbanes.photoview.PhotoView;
 
 

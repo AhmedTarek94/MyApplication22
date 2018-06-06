@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
     tools:context="com.example.ltc_pc.myapplication.frag_conf_info"
-    android:theme="@style/Theme.AppCompat.NoActionBar">
-
+>
 
     <ScrollView
         android:layout_width="match_parent"

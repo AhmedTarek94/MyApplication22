@@ -1,5 +1,6 @@
 package com.example.ltc_pc.myapplication;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class frag_conf_info extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_conf_info, container, false);
+
 
 
         return view;
