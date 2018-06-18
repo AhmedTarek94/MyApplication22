@@ -95,7 +95,7 @@ public class frag_mtc_contact extends Fragment{
                 onClick(v);
                 }
                             else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "01025275522"));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "0020224036110"));
                     startActivity(intent);
                 }
             }

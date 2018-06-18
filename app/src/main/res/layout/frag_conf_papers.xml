@@ -1,78 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    tools:context="com.example.ltc_pc.myapplication.frag_conf_papers">
+    android:orientation="vertical"
+    tools:context="com.example.ltc_pc.myapplication.frag_conf_papers"
+    tools:layout_editor_absoluteY="25dp">
 
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20sp" />
 
     <TextView
         android:id="@+id/txt_header"
         style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/divider_horizontal_bright"
-        android:text="Choose the scientific paper you wish to view"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:shadowColor="@color/colorPrimary"
+        android:text="Choose a paper to view"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="32dp" />
 
-    <Spinner
-        android:id="@+id/dep_spin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="171dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20sp" />
 
-    <Spinner
-        android:id="@+id/pap_spin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="240dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_paper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:text="Open"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="37dp" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="16dp"
         android:text="Department"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/dep_spin"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="23dp" />
+
+    <Spinner
+        android:id="@+id/dep_spin"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:layout_marginStart="16dp"
         android:text="Paper"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/pap_spin"
-        app:layout_constraintStart_toStartOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="258dp" />
+
+    <Spinner
+        android:id="@+id/pap_spin"
+        android:layout_width="368dp"
+        android:layout_height="35dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="303dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="78dp" />
+
+    <Button
+        android:id="@+id/btn_paper"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/paper"
+        android:gravity="center_horizontal|center"
+        android:text="Open"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="403dp" />
+
+
+</LinearLayout>

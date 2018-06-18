@@ -11,17 +11,13 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-
-
+import android.widget.TextView;
 
 
 public class frag_mtc_info extends Fragment{
 
     private ImageView img;
-    private Matrix matrix = new Matrix();
-    private float scale = 1f;
-    private ScaleGestureDetector SGD;
+    TextView txt_hist;
 
 
 
@@ -60,6 +56,7 @@ public class frag_mtc_info extends Fragment{
 
         ImageView mtc_header = (ImageView) view.findViewById(R.id.mtc_header);
 
+        txt_hist=view.findViewById(R.id.txt_hist);
 
 
 

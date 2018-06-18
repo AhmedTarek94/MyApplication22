@@ -88,7 +88,7 @@ public class frag_mtc_map extends Fragment /*implements OnMapReadyCallback  */{
 
 
 
-        ImageView imageView4 = (ImageView) view.findViewById(R.id.imageView4);
+
        // imageView4.setOnTouchListener(new ImageMatrixTouchHandler(view.getContext()));
 
 

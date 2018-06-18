@@ -121,6 +121,7 @@ public class Tab_enroll extends Fragment  {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                initialize_user();
                 upload();
                 push_user();
 
@@ -206,14 +207,20 @@ public class Tab_enroll extends Fragment  {
                     });
         }
     }
-    private void push_user()
+
+    public void initialize_user()
     {
         id=txt_id.getText().toString();
         name=txt_name.getText().toString();
         email=txt_email.getText().toString();
         mob=txt_mob.getText().toString();
+    }
 
-        user=new User(name,id,email,downloadUrl);
+    private void push_user()
+    {
+
+
+        user=new User(name,id,email,mob);
 
         databaseReference.child("Users").child(mob).push().setValue(user);
 

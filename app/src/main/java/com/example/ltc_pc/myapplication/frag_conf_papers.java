@@ -72,10 +72,10 @@ public class frag_conf_papers extends Fragment {
 //set the spinners adapter to the previously created one.
         dep_spin.setAdapter(dep_adapter);
 
-        pap1=new String[]{"1","2","3"};
-        pap2=new String[]{"12","22","32"};
-        pap3=new String[]{"13","23","33"};
-        pap4=new String[]{"14","24","34"};
+        pap1=new String[]{"paper 1","paper 2","paper 3"};
+        pap2=new String[]{"paper 12","paper 22","paper 32"};
+        pap3=new String[]{"paper 13","paper 23","paper 33"};
+        pap4=new String[]{"paper 14","paper 24","paper 34"};
 
         final Spinner pap_spin = view.findViewById(R.id.pap_spin);
 //create a list of items for the spinner.
@@ -118,6 +118,22 @@ public class frag_conf_papers extends Fragment {
                 }
 
                 else if (position==3)
+                {
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap4);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+
+                else if (position==4)
+                {
+                    ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                            android.R.layout.simple_spinner_dropdown_item, pap4);
+                    pap_spin.setAdapter(pap_adapter);
+                    pap_adapter.notifyDataSetChanged();
+                }
+
+                else if (position==5)
                 {
                     ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
                             android.R.layout.simple_spinner_dropdown_item, pap4);

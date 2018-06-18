@@ -4,10 +4,12 @@
     android:layout_height="fill_parent"
     >
 
-    <ImageView android:id="@+id/splashscreen" android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/splashscreen"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:src="@drawable/call_for_papers" />
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"

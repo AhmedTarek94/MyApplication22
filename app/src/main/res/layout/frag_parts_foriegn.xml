@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.example.ltc_pc.myapplication.frag_parts_foreign">
+    tools:context="com.example.ltc_pc.myapplication.frag_parts_foreign"
+    tools:layout_editor_absoluteY="25dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -17,59 +18,67 @@
         android:background="@android:drawable/editbox_background_normal"
         android:text="Foriegn universities"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView22"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fr1"
+        app:layout_constraintEnd_toStartOf="@+id/fr2"
+        app:layout_constraintStart_toStartOf="@+id/fr2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView19"
+        android:id="@+id/fr3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/for1"
+        android:clickable="true"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView20"
+        app:layout_constraintEnd_toStartOf="@+id/fr4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView22" />
+        app:layout_constraintTop_toBottomOf="@+id/fr1" />
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/fr4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/for2"
+        android:clickable="true"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView19"
-        app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+        app:layout_constraintStart_toEndOf="@+id/fr3"
+        app:layout_constraintTop_toBottomOf="@+id/fr2" />
 
     <ImageView
-        android:id="@+id/imageView21"
+        android:id="@+id/fr2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="93dp"
         android:src="@drawable/for3"
-        app:layout_constraintBottom_toTopOf="@+id/imageView20"
+        android:clickable="true"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toTopOf="@+id/fr4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView22"
+        app:layout_constraintStart_toEndOf="@+id/fr1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView22"
+        android:id="@+id/fr1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/for4"
-        app:layout_constraintBottom_toTopOf="@+id/imageView19"
-        app:layout_constraintEnd_toStartOf="@+id/imageView21"
+        android:clickable="true"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toTopOf="@+id/fr3"
+        app:layout_constraintEnd_toStartOf="@+id/fr2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 </android.support.constraint.ConstraintLayout>
