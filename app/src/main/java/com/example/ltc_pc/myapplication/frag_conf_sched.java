@@ -6,6 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class frag_conf_sched extends Fragment{
 
@@ -40,6 +44,14 @@ public class frag_conf_sched extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_conf_sched, container, false);
+
+
+        //Date from string
+        String str_date=null;
+        SimpleDateFormat event_date=new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        try
+        {Date date=event_date.parse(str_date);}
+        catch (ParseException pe){}
 
 
         return view;
