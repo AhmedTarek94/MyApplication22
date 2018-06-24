@@ -70,21 +70,23 @@
 
             <Button
                 android:id="@+id/btn_file"
-                android:layout_width="match_parent"
+                android:layout_width="237dp"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:background="@drawable/back_xml"
                 android:text="Choose your paper"
                 android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_submit"
-                android:layout_width="match_parent"
+                android:layout_width="237dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/back_xml"
                 android:text="Submit"
-                android:textSize="18sp"
 
+                android:textSize="18sp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
