@@ -176,6 +176,7 @@ public class frag_conf_papers extends Fragment {
                 Intent view_intent=new Intent(getActivity(),viewer.class);
                 view_intent.putExtra("url",url);
                 startActivity(view_intent);
+                getActivity().overridePendingTransition(R.anim.leave,R.anim.leave);
             }
         });
 

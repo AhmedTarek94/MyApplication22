@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
                 android:fontFamily="sans-serif"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/mtc_hist_1"
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
                 android:fontFamily="sans-serif"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/obj"
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/back_xml"
-                    android:padding="3dp"
+                    android:padding="6dp"
                     android:text="@string/mostafa"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -141,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/back_xml"
-                    android:padding="3dp"
+                    android:padding="6dp"
                     android:text="@string/seleim"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
@@ -181,13 +181,13 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
 
-                        android:layout_width="192dp"
+                        android:layout_width="wrap_content"
 
                         android:layout_height="151dp"
                         android:src="@drawable/tarek" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="190dp"
+                        android:layout_width="195dp"
                         android:layout_height="151dp"
                         android:src="@drawable/zema" />
 

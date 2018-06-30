@@ -44,8 +44,7 @@ public class frag_conf_info extends Fragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_conf_info, container, false);
 
-        TextView txt_hist=(TextView)view.findViewById(R.id.txt_hist);
-        txt_hist.setBackgroundColor(Color.GRAY);
+
 
 
 

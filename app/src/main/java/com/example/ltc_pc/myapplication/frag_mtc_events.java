@@ -69,29 +69,33 @@ public class frag_mtc_events extends Fragment implements View.OnClickListener{
                 String url3 = "http://www.mtc.edu.eg/Publication/home.aspx?pubid=5";
                 Intent i3 = new Intent(Intent.ACTION_VIEW);
                 i3.setData(Uri.parse(url3));
+
                 startActivity(i3);
-                ;
+
 
             case(R.id.ev2):
                 String url = "http://www.mtc.edu.eg/Publication/home.aspx?pubid=6";
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
+
                 startActivity(i);
-                ;
+
 
             case(R.id.ev3):
                 String url31 = "http://www.mtc.edu.eg/Publication/home.aspx?pubid=4";
                 Intent i31 = new Intent(Intent.ACTION_VIEW);
                 i31.setData(Uri.parse(url31));
+
                 startActivity(i31);
-                ;
+
 
             case(R.id.ev4):
                 String url33 = "http://www.mtc.edu.eg/Publication/home.aspx?pubid=7";
                 Intent i33 = new Intent(Intent.ACTION_VIEW);
                 i33.setData(Uri.parse(url33));
+
                 startActivity(i33);
-                ;
+
         }
     }
 }

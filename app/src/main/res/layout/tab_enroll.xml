@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/back_xml"
-                android:text="Choose your paper"
+                android:text="Pick your PDF file"
                 android:textSize="18sp" />
 
             <Button

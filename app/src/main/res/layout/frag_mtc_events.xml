@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/icccae_brief"
                 android:textColor="@android:color/black" />
 
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/icee_brief"
                 android:textColor="@android:color/black" />
 
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/iceeing_brief"
                 android:textColor="@android:color/black" />
 
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_xml"
-                android:padding="3dp"
+                android:padding="6dp"
                 android:text="@string/icmep_brief"
                 android:textColor="@android:color/black" />
 
