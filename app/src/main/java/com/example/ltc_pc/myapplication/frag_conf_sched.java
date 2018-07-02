@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import java.util.List;
 public class frag_conf_sched extends Fragment{
 
     Button btn_prev,btn_today,btn_up;
+    TextView textView32;
 
     ListView ev_list;
     LinearLayout list_layout;
@@ -57,6 +59,21 @@ public class frag_conf_sched extends Fragment{
 
 
 
+
+        if (getArguments() != null) {
+
+
+           /* mPosition = getArguments().getInt("position");*/
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.frag_conf_sched, container, false);
+
+        ev_list=(ListView)view.findViewById(R.id.ev_list);
+
         ev_name=new String[]{"event1","event2","event3","event4","event5","event6"};
 
         ev_date=new String[]{"30/06/2018 10:10","30/06/2018 11:10","01/07/2018 09:40:",
@@ -86,17 +103,17 @@ public class frag_conf_sched extends Fragment{
         {
             try{
                 date =dateFormat.parse(ev_date[i]);
-                if (System.currentTimeMillis() ==date.getDay())
+                if (new Date().equals(date))
                 {
                     today_ev[a]=events[i].name;
                     a++;
                 }
-                else if(System.currentTimeMillis()>date.getDay())
+                else if(new Date().after(date))
                 {
                     prev_ev[b]=events[i].name;
                     b++;
                 }
-                else if (System.currentTimeMillis()<date.getDay())
+                else if (new Date().before(date))
                 {
                     next_ev[c]=events[i].name;
                     c++;
@@ -105,35 +122,20 @@ public class frag_conf_sched extends Fragment{
             catch (ParseException pe){}
 
             final List< String > ListElementsArrayList = new ArrayList< String >
-                    (Arrays.asList(ev_name));
+                    (Arrays.asList(next_ev));
 
 
             final ArrayAdapter < String > adapter = new ArrayAdapter< String >
-                    (getActivity(), android.R.layout.simple_list_item_1,
-                            ListElementsArrayList);
-            adapter.notifyDataSetChanged();
-
-
+                    (getActivity(), android.R.layout.simple_list_item_1,ListElementsArrayList);
 
             ev_list.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         }
-        if (getArguments() != null) {
 
-
-           /* mPosition = getArguments().getInt("position");*/
+            textView32=(TextView)view.findViewById(R.id.textView32);
+        if(today_ev.length!=0) {
+            textView32.setText(today_ev[0].toString());
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_conf_sched, container, false);
-
-
-
-
-
-
 
         //setting the listview adapter
 
@@ -154,22 +156,16 @@ public class frag_conf_sched extends Fragment{
             public void onClick(View view) {
 
                  List< String > ListElementsArrayList = new ArrayList< String >
-                        (Arrays.asList(ev_name));
+                        (Arrays.asList(today_ev));
 
 
                  ArrayAdapter < String > adapter = new ArrayAdapter< String >
-                        (getActivity(), android.R.layout.simple_list_item_1,
-                                ListElementsArrayList);
+                        (getActivity(), android.R.layout.simple_list_item_1, ListElementsArrayList);
 
 
-               try {
-                   ev_list.setAdapter(adapter);
-               }
-               catch (NullPointerException nbe)
-               {
-                   nbe.printStackTrace();
-               }
+                ev_list.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+
 
 
             }
@@ -182,20 +178,13 @@ public class frag_conf_sched extends Fragment{
             public void onClick(View view) {
 
                 List< String > ListElementsArrayList = new ArrayList< String >
-                        (Arrays.asList(ev_name));
+                        (Arrays.asList(prev_ev));
 
 
                 ArrayAdapter < String > adapter = new ArrayAdapter< String >
-                        (getActivity(), android.R.layout.simple_list_item_1,
-                                ListElementsArrayList);
+                        (getActivity(), android.R.layout.simple_list_item_1, ListElementsArrayList);
 
-                try {
-                    ev_list.setAdapter(adapter);
-                }
-                catch (NullPointerException nbe)
-                {
-                    nbe.printStackTrace();
-                }
+                ev_list.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
             }
@@ -208,20 +197,13 @@ public class frag_conf_sched extends Fragment{
             public void onClick(View view) {
 
                 List< String > ListElementsArrayList = new ArrayList< String >
-                        (Arrays.asList(ev_name));
+                        (Arrays.asList(next_ev));
 
 
                 ArrayAdapter < String > adapter = new ArrayAdapter< String >
-                        (getActivity(), android.R.layout.simple_list_item_1,
-                                ListElementsArrayList);
+                        (getActivity(), android.R.layout.simple_list_item_1, ListElementsArrayList);
 
-                try {
-                    ev_list.setAdapter(adapter);
-                }
-                catch (NullPointerException nbe)
-                {
-                    nbe.printStackTrace();
-                }
+                ev_list.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
             }
