@@ -3,6 +3,7 @@ package com.example.ltc_pc.myapplication;
 import android.nfc.FormatException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,10 @@ public class frag_conf_sched extends Fragment{
     public String [] ev_date;
     public String [] ev_loc;
 
+    String [] today_ev;
+    String [] prev_ev;
+    String [] next_ev;
+
     public static frag_conf_sched newInstance(int position) {
         frag_conf_sched fragment = new frag_conf_sched();
         Bundle args = new Bundle();
@@ -49,23 +54,8 @@ public class frag_conf_sched extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
 
 
-           /* mPosition = getArguments().getInt("position");*/
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_conf_sched, container, false);
-
-
-        final String exdate="30/6/2018 18:50";
-       // datecmpres=(TextView)view.findViewById(R.id.datecmpres);
-      //  TextView datestr=(TextView)view.findViewById(R.id.datestr);
-        //datestr.setText(new Date().toString());
 
         ev_name=new String[]{"event1","event2","event3","event4","event5","event6"};
 
@@ -82,19 +72,71 @@ public class frag_conf_sched extends Fragment{
             events[i].date=ev_date[i];
         }
 
+        today_ev=new String[]{};
+        prev_ev=new String[]{};
+        next_ev=new String[]{};
+
+        int a=0,b=0,c=0;
+
+        SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date date=new Date();
+
+
+        for(int i=0;i<events.length;i++)
+        {
+            try{
+                date =dateFormat.parse(ev_date[i]);
+                if (System.currentTimeMillis() ==date.getDay())
+                {
+                    today_ev[a]=events[i].name;
+                    a++;
+                }
+                else if(System.currentTimeMillis()>date.getDay())
+                {
+                    prev_ev[b]=events[i].name;
+                    b++;
+                }
+                else if (System.currentTimeMillis()<date.getDay())
+                {
+                    next_ev[c]=events[i].name;
+                    c++;
+                }
+            }
+            catch (ParseException pe){}
+
+            final List< String > ListElementsArrayList = new ArrayList< String >
+                    (Arrays.asList(ev_name));
+
+
+            final ArrayAdapter < String > adapter = new ArrayAdapter< String >
+                    (getActivity(), android.R.layout.simple_list_item_1,
+                            ListElementsArrayList);
+            adapter.notifyDataSetChanged();
+
+
+
+            ev_list.setAdapter(adapter);
+        }
+        if (getArguments() != null) {
+
+
+           /* mPosition = getArguments().getInt("position");*/
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.frag_conf_sched, container, false);
+
+
+
+
 
 
 
         //setting the listview adapter
-        final List< String > ListElementsArrayList = new ArrayList< String >
-                (Arrays.asList(ev_name));
 
-
-        final ArrayAdapter < String > adapter = new ArrayAdapter< String >
-                (getActivity(), android.R.layout.text_view,
-                        ListElementsArrayList);
-
-        ev_list.setAdapter(adapter);
 
         /*
         * adding elements to the list
@@ -111,6 +153,23 @@ public class frag_conf_sched extends Fragment{
             @Override
             public void onClick(View view) {
 
+                 List< String > ListElementsArrayList = new ArrayList< String >
+                        (Arrays.asList(ev_name));
+
+
+                 ArrayAdapter < String > adapter = new ArrayAdapter< String >
+                        (getActivity(), android.R.layout.simple_list_item_1,
+                                ListElementsArrayList);
+
+
+               try {
+                   ev_list.setAdapter(adapter);
+               }
+               catch (NullPointerException nbe)
+               {
+                   nbe.printStackTrace();
+               }
+                adapter.notifyDataSetChanged();
 
 
             }
@@ -122,23 +181,23 @@ public class frag_conf_sched extends Fragment{
             @Override
             public void onClick(View view) {
 
-                //String to date
-                SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date date=new Date();
-                try
-                {
-                    for (int i=0;i>events.length;i++)
-                    {
-                        date =dateFormat.parse(ev_date[i]);
-                        if (System.currentTimeMillis() >date.getTime())
-                        {
-                            //add to the list if condition is applied
-                            ListElementsArrayList.add(ev_name[i].toString());
-                            adapter.notifyDataSetChanged();
+                List< String > ListElementsArrayList = new ArrayList< String >
+                        (Arrays.asList(ev_name));
 
-                        }
-                    }}
-                catch (ParseException pe){}
+
+                ArrayAdapter < String > adapter = new ArrayAdapter< String >
+                        (getActivity(), android.R.layout.simple_list_item_1,
+                                ListElementsArrayList);
+
+                try {
+                    ev_list.setAdapter(adapter);
+                }
+                catch (NullPointerException nbe)
+                {
+                    nbe.printStackTrace();
+                }
+                adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -147,6 +206,23 @@ public class frag_conf_sched extends Fragment{
         btn_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                List< String > ListElementsArrayList = new ArrayList< String >
+                        (Arrays.asList(ev_name));
+
+
+                ArrayAdapter < String > adapter = new ArrayAdapter< String >
+                        (getActivity(), android.R.layout.simple_list_item_1,
+                                ListElementsArrayList);
+
+                try {
+                    ev_list.setAdapter(adapter);
+                }
+                catch (NullPointerException nbe)
+                {
+                    nbe.printStackTrace();
+                }
+                adapter.notifyDataSetChanged();
 
             }
         });

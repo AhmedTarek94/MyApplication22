@@ -15,4 +15,19 @@ public class Event {
         this.location=location;
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getDate()
+    {
+        return this.date;
+    }
+
+    public String getLoc()
+    {
+        return this.location;
+    }
+
 }

@@ -81,7 +81,9 @@ public class frag_conf_papers extends Fragment {
 //create a list of items for the spinner.
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
-        final ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, pap1);
+        final ArrayAdapter<String> pap_adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_dropdown_item, pap1);
+
 //set the spinners adapter to the previously created one.
         pap_spin.setAdapter(pap_adapter);
 
